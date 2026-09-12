@@ -1,0 +1,67 @@
+/* Standalone admin panel styling — intentionally separate from the
+   public site's style.css so the public design is never touched. */
+.admin-shell{min-height:100vh;background:#0b1015;color:#e7e9ec;font-family:"DM Sans",system-ui,sans-serif}
+.admin-login-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 20%,#16202a,#0b1015)}
+.admin-login-card{width:min(380px,90vw);background:#121820;border:1px solid #232c36;border-radius:14px;padding:36px 32px;box-shadow:0 30px 70px rgba(0,0,0,.45)}
+.admin-login-card img{height:38px;display:block;margin-bottom:22px}
+.admin-login-card h1{font-size:20px;margin-bottom:6px}
+.admin-login-card p{color:#8b96a3;font-size:13px;margin-bottom:24px}
+.admin-field{margin-bottom:16px}
+.admin-field label{display:block;font-size:12px;color:#8b96a3;margin-bottom:6px;letter-spacing:.02em}
+.admin-field input{width:100%;padding:11px 12px;border-radius:8px;border:1px solid #2a333e;background:#0d1218;color:#fff;font-size:14px;outline:none}
+.admin-field input:focus{border-color:#d6ae68}
+.admin-btn{width:100%;padding:12px;border:0;border-radius:8px;background:#d6ae68;color:#111;font-weight:700;font-size:14px;cursor:pointer;transition:.2s}
+.admin-btn:hover{background:#f2c879}
+.admin-btn:disabled{opacity:.6;cursor:not-allowed}
+.admin-error{background:rgba(217,90,90,.12);border:1px solid rgba(217,90,90,.4);color:#f0a3a3;padding:10px 12px;border-radius:8px;font-size:13px;margin-bottom:16px}
+
+.admin-topbar{display:flex;align-items:center;justify-content:space-between;padding:16px 28px;border-bottom:1px solid #1c242d;background:#0e141b;position:sticky;top:0;z-index:5}
+.admin-topbar img{height:30px}
+.admin-topbar .admin-user{display:flex;align-items:center;gap:14px;font-size:13px;color:#8b96a3}
+.admin-logout{background:transparent;border:1px solid #2a333e;color:#e7e9ec;padding:8px 14px;border-radius:8px;font-size:13px;cursor:pointer}
+.admin-logout:hover{border-color:#d6ae68;color:#d6ae68}
+
+.admin-container{max-width:1180px;margin:0 auto;padding:28px}
+.admin-stats{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:26px}
+.admin-stat-card{background:#121820;border:1px solid #1f2830;border-radius:12px;padding:18px}
+.admin-stat-card span{display:block;font-size:12px;color:#8b96a3;margin-bottom:8px;letter-spacing:.03em}
+.admin-stat-card strong{font-size:26px;font-weight:800}
+.admin-stat-card.new strong{color:#d6ae68}
+.admin-stat-card.contacted strong{color:#6fb1e0}
+.admin-stat-card.progress strong{color:#e0b96f}
+.admin-stat-card.resolved strong{color:#7fd68a}
+
+.admin-toolbar{display:flex;gap:12px;align-items:center;margin-bottom:16px;flex-wrap:wrap}
+.admin-toolbar input,.admin-toolbar select{padding:10px 12px;border-radius:8px;border:1px solid #2a333e;background:#0d1218;color:#fff;font-size:13px}
+.admin-toolbar input{flex:1;min-width:200px}
+
+.admin-table-wrap{background:#121820;border:1px solid #1f2830;border-radius:12px;overflow:hidden}
+.admin-table{width:100%;border-collapse:collapse;font-size:13px}
+.admin-table th{text-align:left;padding:12px 14px;background:#161e27;color:#8b96a3;font-weight:600;font-size:11px;letter-spacing:.04em;text-transform:uppercase}
+.admin-table td{padding:13px 14px;border-top:1px solid #1c242d;vertical-align:top}
+.admin-table tr:hover td{background:#141c25}
+.admin-badge{display:inline-block;padding:4px 10px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.02em}
+.admin-badge.NEW{background:rgba(214,174,104,.16);color:#d6ae68}
+.admin-badge.CONTACTED{background:rgba(111,177,224,.16);color:#6fb1e0}
+.admin-badge.IN_PROGRESS{background:rgba(224,185,111,.16);color:#e0b96f}
+.admin-badge.RESOLVED{background:rgba(127,214,138,.16);color:#7fd68a}
+.admin-table select.status-select{background:#0d1218;color:#fff;border:1px solid #2a333e;border-radius:6px;padding:5px 8px;font-size:12px}
+.admin-icon-btn{background:transparent;border:1px solid #2a333e;color:#e7e9ec;border-radius:6px;padding:6px 10px;font-size:12px;cursor:pointer;margin-right:6px}
+.admin-icon-btn:hover{border-color:#d6ae68;color:#d6ae68}
+.admin-icon-btn.danger:hover{border-color:#e07a7a;color:#e07a7a}
+.admin-empty{padding:40px;text-align:center;color:#8b96a3}
+
+.admin-modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;z-index:50;padding:20px}
+.admin-modal{width:min(480px,100%);background:#121820;border:1px solid #232c36;border-radius:14px;padding:28px}
+.admin-modal h2{font-size:18px;margin-bottom:18px}
+.admin-modal dl{display:grid;grid-template-columns:110px 1fr;gap:10px 14px;font-size:13px;margin-bottom:20px}
+.admin-modal dt{color:#8b96a3}
+.admin-modal dd{color:#e7e9ec}
+.admin-modal-actions{display:flex;justify-content:flex-end;gap:10px}
+.admin-modal-actions button{padding:9px 16px;border-radius:8px;font-size:13px;cursor:pointer}
+.admin-modal-close{background:transparent;border:1px solid #2a333e;color:#e7e9ec}
+
+@media(max-width:900px){
+  .admin-stats{grid-template-columns:repeat(2,1fr)}
+  .admin-table-wrap{overflow-x:auto}
+}
