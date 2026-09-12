@@ -11,9 +11,7 @@ function getTransporter() {
   }
 
   transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 587,
-    secure: false,
+    service: "gmail",
     auth: {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASS,
@@ -52,30 +50,11 @@ async function sendContactNotificationAsync(contactDoc, ContactModel) {
 
         <hr>
 
-        <p>
-          <strong>Name:</strong>
-          ${escapeHtml(name)}
-        </p>
-
-        <p>
-          <strong>Email:</strong>
-          ${escapeHtml(email)}
-        </p>
-
-        <p>
-          <strong>Phone:</strong>
-          ${escapeHtml(phone || "-")}
-        </p>
-
-        <p>
-          <strong>Subject:</strong>
-          ${escapeHtml(subject || "-")}
-        </p>
-
-        <p>
-          <strong>Service:</strong>
-          ${escapeHtml(service || "-")}
-        </p>
+        <p><strong>Name:</strong> ${escapeHtml(name)}</p>
+        <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+        <p><strong>Phone:</strong> ${escapeHtml(phone || "-")}</p>
+        <p><strong>Subject:</strong> ${escapeHtml(subject || "-")}</p>
+        <p><strong>Service:</strong> ${escapeHtml(service || "-")}</p>
 
         <p>
           <strong>Message:</strong><br>
@@ -98,10 +77,6 @@ async function sendContactNotificationAsync(contactDoc, ContactModel) {
 
   try {
     console.log("📧 Sending contact notification email...");
-
-    await mailer.verify();
-
-    console.log("✅ Gmail SMTP connection verified");
 
     const info = await mailer.sendMail({
       from: `"YES Softech Website" <${process.env.EMAIL_USER}>`,
@@ -127,7 +102,8 @@ Submitted: ${new Date(
       `,
     });
 
-    console.log("✅ Email sent successfully:", info.messageId);
+    console.log("✅ EMAIL SENT SUCCESSFULLY");
+    console.log("Message ID:", info.messageId);
 
     if (ContactModel && contactDoc._id) {
       await ContactModel.findByIdAndUpdate(contactDoc._id, {
@@ -136,10 +112,11 @@ Submitted: ${new Date(
       });
     }
   } catch (err) {
-    console.error("❌ EMAIL ERROR:");
+    console.error("❌ EMAIL ERROR");
     console.error("Message:", err.message);
     console.error("Code:", err.code || "N/A");
     console.error("Response:", err.response || "N/A");
+    console.error("Response Code:", err.responseCode || "N/A");
 
     if (ContactModel && contactDoc._id) {
       await ContactModel.findByIdAndUpdate(contactDoc._id, {
